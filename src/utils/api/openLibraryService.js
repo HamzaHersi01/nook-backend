@@ -30,6 +30,12 @@ const getBookDetails = async(key) =>{
   return res.data
 }
 
+const getAllEditions = async(key) =>{
+  const url = `/works/${key}/editions.json`
+  const res = await apiClient.get(url)
+  return res.data
+}
 
 
-module.exports = { getBookByISBN,getBookBySearch,getAuthorSearch, getBookDetails };
+
+module.exports = { getBookByISBN,getBookBySearch,getAuthorSearch, getBookDetails, getAllEditions};
