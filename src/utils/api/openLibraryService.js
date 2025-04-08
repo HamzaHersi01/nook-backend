@@ -23,6 +23,13 @@ const getAuthorSearch = async(author) =>{
   return res.data
 }
 
+const getBookDetails = async(key) =>{
+  const url = `/works/${key}.json`
+  console.log("Full URL:", apiClient.defaults.baseURL + url) //Debug log
+  const res = await apiClient.get(url)
+  return res.data
+}
 
 
-module.exports = { getBookByISBN,getBookBySearch,getAuthorSearch };
+
+module.exports = { getBookByISBN,getBookBySearch,getAuthorSearch, getBookDetails };
