@@ -1,4 +1,5 @@
 const apiClient = require("./openLibraryClient");
+const coversApiClient = require("./openLibraryClient")
 
 const getBookByIsbnFromOpenLib = async (isbn) => {
   const url = `/isbn/${isbn}.json`;
@@ -37,11 +38,21 @@ const getEditionsOfBookFromOpenLib = async(key) =>{
 }
 
 const getSmallCoverImgFromOpenLib = async(isbn) =>{
-  const url = `/`
+  const url = `/${isbn}-S.jpg`
+  const res = await coversApiClient.get(url)
+  return res.data
 }
 
+const getMediumCoverImgFromOpenLib = async(isbn) =>{
+  const url = `/${isbn}-M.jpg`
+  const res = await coversApiClient.get(url)
+  return res.data
+}
 
+const getLargeCoverImgFromOpenLib = async(isbn) =>{
+  const url = `/${isbn}-L.jpg`
+  const res = await coversApiClient.get(url)
+  return res.data
+}
 
-
-
-module.exports = { getBookByIsbnFromOpenLib, searchOpenLibForBook, getAuthorFromOpenLib, getWorkDetailsFromOpenLib, getEditionsOfBookFromOpenLib};
+module.exports = { getBookByIsbnFromOpenLib, searchOpenLibForBook, getAuthorFromOpenLib, getWorkDetailsFromOpenLib, getEditionsOfBookFromOpenLib, getSmallCoverImgFromOpenLib,getMediumCoverImgFromOpenLib, getLargeCoverImgFromOpenLib};
