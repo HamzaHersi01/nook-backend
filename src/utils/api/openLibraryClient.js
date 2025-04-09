@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const baseURL = process.env.OPEN_LIBRARY_API || 'https://openlibrary.org';
+const baseURL = process.env.OPEN_LIBRARY_API;
 
 const apiClient = axios.create({
   baseURL: baseURL,
