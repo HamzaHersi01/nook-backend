@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 const baseURL = process.env.OPEN_LIBRARY_API;
+const coversBaseURL = process.env.OPEN_LIBRARY_COVERS_API;
 
 const apiClient = axios.create({
   baseURL: baseURL,
@@ -9,6 +10,14 @@ const apiClient = axios.create({
   },
 });
 
-console.log('Open Library base API URL:', baseURL);
+const coversApiClient = axios.create({
+  baseURL: coversBaseURL,
+  headers: {
+    'Content-Type':'image/jpg',
+  },
+});
 
-module.exports = apiClient;
+console.log('Open Library base API URL:', baseURL);
+console.log('Covers Open Library API url',coversBaseURL);
+
+module.exports = apiClient,coversApiClient;

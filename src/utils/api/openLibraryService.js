@@ -36,6 +36,12 @@ const getEditionsOfBookFromOpenLib = async(key) =>{
   return res.data
 }
 
+const getSmallCoverImgFromOpenLib = async(isbn) =>{
+  const url = `/`
+}
+
+
+
 
 
 module.exports = { getBookByIsbnFromOpenLib, searchOpenLibForBook, getAuthorFromOpenLib, getWorkDetailsFromOpenLib, getEditionsOfBookFromOpenLib};
