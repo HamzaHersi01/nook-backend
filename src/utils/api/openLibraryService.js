@@ -24,15 +24,15 @@ const getAuthorFromOpenLib = async(author) =>{
   return res.data
 }
 
-const getWorkDetailsFromOpenLib = async(key) =>{
-  const url = `/works/${key}.json`
+const getWorkDetailsFromOpenLib = async(workID) =>{
+  const url = `/works/${workID}.json`
   console.log("Full URL:", apiClient.defaults.baseURL + url) //Debug log
   const res = await apiClient.get(url)
   return res.data
 }
 
-const getEditionsOfBookFromOpenLib = async(key) =>{
-  const url = `/works/${key}/editions.json`
+const getEditionsOfBookFromOpenLib = async(workID) =>{
+  const url = `/works/${workID}/editions.json`
   const res = await apiClient.get(url)
   return res.data
 }

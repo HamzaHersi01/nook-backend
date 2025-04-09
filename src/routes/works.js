@@ -5,7 +5,8 @@ const { Query } = require('pg');
 
 const router = express.Router();
 
-router.get('/:key', getWorkDetails);
-router.get('/getEditions/:key',getEditions)
+
+router.get('/getEditions/:workID',getEditions)
+router.get('/getBookDetails/:workID', getWorkDetails)
 
 module.exports = router;
