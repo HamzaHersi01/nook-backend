@@ -29,7 +29,7 @@ const getWorkDetailsFromOpenLib = async(workID) =>{
   console.log("Full URL:", apiClient.defaults.baseURL + url) //Debug log
   const res = await apiClient.get(url)
   return res.data
-}
+} 
 
 const getEditionsOfBookFromOpenLib = async(workID) =>{
   const url = `/works/${workID}/editions.json`
