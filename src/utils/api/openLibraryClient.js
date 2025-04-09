@@ -14,6 +14,7 @@ const coversApiClient = axios.create({
   baseURL: coversBaseURL,
   headers: {
     'Content-Type':'image/jpg',
+    
   },
 });
 
