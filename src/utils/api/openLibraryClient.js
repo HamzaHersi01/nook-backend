@@ -12,13 +12,16 @@ const apiClient = axios.create({
 
 const coversApiClient = axios.create({
   baseURL: coversBaseURL,
+  responseType: 'arraybuffer', // required to handle image binary
   headers: {
-    'Content-Type':'image/jpg',
-    
+    'Accept': 'image/jpeg', // tells server we expect JPEG image
   },
 });
 
 console.log('Open Library base API URL:', baseURL);
-console.log('Covers Open Library API url',coversBaseURL);
+console.log('Covers Open Library API url', coversBaseURL);
 
-module.exports = apiClient,coversApiClient;
+module.exports = {
+  apiClient,
+  coversApiClient
+};

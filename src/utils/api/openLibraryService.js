@@ -1,6 +1,6 @@
 const querystring = require('querystring');
-const apiClient = require("./openLibraryClient");
-const coversApiClient = require("./openLibraryClient")
+const { coversApiClient } = require("./openLibraryClient");
+const { apiClient } = require("./openLibraryClient");
 
 const getBookByIsbnFromOpenLib = async (isbn) => {
   const url = `/isbn/${isbn}.json`;
@@ -17,9 +17,8 @@ const searchOpenLibForBook = async (searchItem) => {
     return res.data
 }
 
-const getAuthorFromOpenLib = async(author) =>{
-  const formattedQuery = author.replace(/ /g, '+');
-  const url = `/search.json?author=${formattedQuery}&sort=new`;
+const getAuthorFromOpenLib = async(authorKey) =>{
+  const url = `/authors/${authorKey}/works.json`;
   console.log('Full URL:', apiClient.defaults.baseURL + url); // Debug log
   const res = await apiClient.get(url);
   return res.data
@@ -42,8 +41,8 @@ const getEditionsOfBookFromOpenLib = async(workID) =>{
 const getSmallCoverImgFromOpenLib = async(isbn) =>{
 
   const url = `/${isbn}-S.jpg`
-  console.log("About to call api")
   const res = await coversApiClient.get(url)
+  console.log(`returned response`)
   return res.data
 }
 

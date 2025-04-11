@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.get('/isbn/:isbn', searchBookByISBN);
 router.get('/title/:item', searchBooksByTitle);
-router.get('/author/:author',searchAuthor)
+router.get('/author/:authorKey',searchAuthor)
 
 module.exports = router;

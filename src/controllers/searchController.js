@@ -17,8 +17,8 @@ exports.searchBooksByTitle = async (req, res) => {
 };
 
 exports.searchAuthor = async (req, res) =>{
-  const { author } = req.params;
-  const authorSearchResponse = await getAuthorFromOpenLib(author);
+  const { authorKey } = req.params;
+  const authorSearchResponse = await getAuthorFromOpenLib(authorKey);
   //TODO: transform data if need be. unsure if i need this one to be honest but will keep for time being
   res.json(authorSearchResponse)
 }
