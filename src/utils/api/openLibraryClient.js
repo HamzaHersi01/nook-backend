@@ -12,9 +12,9 @@ const apiClient = axios.create({
 
 const coversApiClient = axios.create({
   baseURL: coversBaseURL,
-  responseType: 'arraybuffer', // required to handle image binary
+  responseType: 'arraybuffer',
   headers: {
-    'Accept': 'image/jpeg', // tells server we expect JPEG image
+    'Accept': 'image/jpeg',
   },
 });
 

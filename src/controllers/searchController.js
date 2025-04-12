@@ -11,8 +11,18 @@ exports.searchBookByISBN = async (req, res) => {
 
 exports.searchBooksByTitle = async (req, res) => {
   const { item } = req.params; 
-  const searchResponse = await searchOpenLibForBook(item);
+  const data = await searchOpenLibForBook(item);
   //TODO: create array of search entries and send that as a response
+  const searchResponse = []
+  for (let doc of data.docs) {
+    const searchItem = {
+      title: doc.title,
+      author_name: doc.author_name,
+      cover_edition_key: doc.cover_edition_key,
+      workID: doc.key
+    };
+    searchResponse.push(searchItem);
+  }
   res.json(searchResponse);
 };
 
