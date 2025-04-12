@@ -47,16 +47,18 @@ const getSmallCoverImgFromOpenLib = async(id) =>{
 }
 
 //TODO: Returns 404, need to fix
-const getMediumCoverImgFromOpenLib = async(isbn) =>{
-  const url = `/${isbn}-M.jpg`
+const getMediumCoverImgFromOpenLib = async(id) =>{
+  const url = `/id/${id}-M.jpg`
   const res = await coversApiClient.get(url)
+  console.log("Full URL:", coversApiClient.defaults.baseURL + url)
   return res.data
 }
 
 //TODO: Returns 404, need to fix
-const getLargeCoverImgFromOpenLib = async(isbn) =>{
-  const url = `/${isbn}-L.jpg`
+const getLargeCoverImgFromOpenLib = async(id) =>{
+  const url = `/id/${id}-L.jpg`
   const res = await coversApiClient.get(url)
+  console.log("Full URL:", coversApiClient.defaults.baseURL + url)
   return res.data
 }
 

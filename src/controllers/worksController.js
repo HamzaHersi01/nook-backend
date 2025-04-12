@@ -4,8 +4,16 @@ const { getEditionsOfBookFromOpenLib } = require('../utils/api/openLibraryServic
 
 exports.getWorkDetails = async (req, res) => {
     const { workID } = req.params;
-    const bookInfo = await getWorkDetailsFromOpenLib(workID);
+    const data = await getWorkDetailsFromOpenLib(workID);
     //TODO: Transform data.
+    bookInfo = {
+      title: data.title,
+      description: data.description,
+      cover: `http://localhost:3001/covers/mediumCover/${data.covers}`,
+      created: data.created.value,
+      workID: data.key,
+      authorID: data.authors[0].author.key
+    };
     res.json(bookInfo);
   };
 

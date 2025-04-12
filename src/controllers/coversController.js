@@ -15,9 +15,9 @@ exports.getSmallCover = async (req, res) => {
   };
 
 exports.getMediumCover = async (req, res) =>{
-    const { isbn } = req.params;
+    const { id } = req.params;
     try {
-      const img = await getMediumCoverImgFromOpenLib(isbn);
+      const img = await getMediumCoverImgFromOpenLib(id);
       res.set('Content-Type', 'image/jpeg');
       res.send(img);
     } catch (error) {
@@ -27,9 +27,9 @@ exports.getMediumCover = async (req, res) =>{
   };
 
 exports.getLargeCover = async (req, res) =>{
-    const { isbn } = req.params;
+    const { id } = req.params;
     try {
-      const img = await getLargeCoverImgFromOpenLib(isbn);
+      const img = await getLargeCoverImgFromOpenLib(id);
       res.set('Content-Type', 'image/jpeg');
       res.send(img);
     } catch (error) {
