@@ -5,8 +5,8 @@ const {getLargeCover} = require('../controllers/coversController')
 
 const router = express.Router();
 
-router.get('/smallCover/:isbn', getSmallCover);
-router.get('/mediumCover/:isbn', getMediumCover);
-router.get('/largeCover/:isbn', getLargeCover);
+router.get('/smallCover/:id', getSmallCover);
+router.get('/mediumCover/:id', getMediumCover);
+router.get('/largeCover/:id', getLargeCover);
 
 module.exports = router;

@@ -18,8 +18,9 @@ exports.searchBooksByTitle = async (req, res) => {
     const searchItem = {
       title: doc.title,
       author_name: doc.author_name,
-      cover_edition_key: doc.cover_edition_key,
-      workID: doc.key
+      cover_edition_key: doc.cover_i,
+      workID: doc.key,
+      smallCoverURL: `http://localhost:3001/covers/smallCover/${doc.cover_i}`
     };
     searchResponse.push(searchItem);
   }

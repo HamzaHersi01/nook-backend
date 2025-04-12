@@ -38,11 +38,11 @@ const getEditionsOfBookFromOpenLib = async(workID) =>{
 }
 
 //TODO: Returns 404, need to fix
-const getSmallCoverImgFromOpenLib = async(isbn) =>{
+const getSmallCoverImgFromOpenLib = async(id) =>{
 
-  const url = `/${isbn}-S.jpg`
+  const url = `/id/${id}-S.jpg`
   const res = await coversApiClient.get(url)
-  console.log(`returned response`)
+  console.log("Full URL:", coversApiClient.defaults.baseURL + url)
   return res.data
 }
 

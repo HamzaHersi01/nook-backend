@@ -3,9 +3,9 @@ const { getMediumCoverImgFromOpenLib } = require('../utils/api/openLibraryServic
 const { getLargeCoverImgFromOpenLib } = require('../utils/api/openLibraryService');
 
 exports.getSmallCover = async (req, res) => {
-    const { isbn } = req.params;
+    const { id } = req.params;
     try {
-      const img = await getSmallCoverImgFromOpenLib(isbn);
+      const img = await getSmallCoverImgFromOpenLib(id);
       res.set('Content-Type', 'image/jpeg');
       res.send(img);
     } catch (error) {
