@@ -1,6 +1,6 @@
-const querystring = require('querystring');
 const { coversApiClient } = require("./openLibraryClient");
 const { apiClient } = require("./openLibraryClient");
+const {googleBooksApiClient} = require("./openLibraryClient");
 
 const getBookByIsbnFromOpenLib = async (isbn) => {
   const url = `/isbn/${isbn}.json`;
@@ -62,4 +62,10 @@ const getLargeCoverImgFromOpenLib = async(id) =>{
   return res.data
 }
 
-module.exports = { getBookByIsbnFromOpenLib, searchOpenLibForBook, getAuthorFromOpenLib, getWorkDetailsFromOpenLib, getEditionsOfBookFromOpenLib, getSmallCoverImgFromOpenLib,getMediumCoverImgFromOpenLib, getLargeCoverImgFromOpenLib};
+const getBookDetailsFromGoogleBooks = async(value) =>{
+  const query = value + process.env.GOOGLE_API_KEY
+  const res = await googleBooksApiClient(query)
+  return res.data;
+}  
+
+module.exports = { getBookByIsbnFromOpenLib, searchOpenLibForBook, getAuthorFromOpenLib, getWorkDetailsFromOpenLib, getEditionsOfBookFromOpenLib, getSmallCoverImgFromOpenLib,getMediumCoverImgFromOpenLib, getLargeCoverImgFromOpenLib, getBookDetailsFromGoogleBooks};
