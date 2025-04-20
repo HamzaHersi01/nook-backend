@@ -62,10 +62,10 @@ const getLargeCoverImgFromOpenLib = async(id) =>{
   return res.data
 }
 
-const getBookDetailsFromGoogleBooks = async(value) =>{
-  const query = value + process.env.GOOGLE_API_KEY
-  const res = await googleBooksApiClient(query)
+const getBookDetailsFromGoogleBooks = async (query) => {
+  const url = `/volumes?q=${query}&key=${process.env.GOOGLE_API_KEY}`;
+  const res = await googleBooksApiClient.get(url);
   return res.data;
-}  
+};
 
 module.exports = { getBookByIsbnFromOpenLib, searchOpenLibForBook, getAuthorFromOpenLib, getWorkDetailsFromOpenLib, getEditionsOfBookFromOpenLib, getSmallCoverImgFromOpenLib,getMediumCoverImgFromOpenLib, getLargeCoverImgFromOpenLib, getBookDetailsFromGoogleBooks};

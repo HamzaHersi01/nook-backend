@@ -1,7 +1,6 @@
 const express = require('express');
 const { getWorkDetails } = require('../controllers/worksController');
 const { getEditions } = require('../controllers/worksController')
-const { Query } = require('pg');
 
 const router = express.Router();
 
