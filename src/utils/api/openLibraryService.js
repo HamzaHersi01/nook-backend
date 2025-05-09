@@ -37,7 +37,7 @@ const getEditionsOfBookFromOpenLib = async(workID) =>{
   return res.data
 }
 
-//TODO: Returns 404, need to fix
+
 const getSmallCoverImgFromOpenLib = async(id) =>{
 
   const url = `/id/${id}-S.jpg`
@@ -46,7 +46,7 @@ const getSmallCoverImgFromOpenLib = async(id) =>{
   return res.data
 }
 
-//TODO: Returns 404, need to fix
+
 const getMediumCoverImgFromOpenLib = async(id) =>{
   const url = `/id/${id}-M.jpg`
   const res = await coversApiClient.get(url)
@@ -54,7 +54,7 @@ const getMediumCoverImgFromOpenLib = async(id) =>{
   return res.data
 }
 
-//TODO: Returns 404, need to fix
+
 const getLargeCoverImgFromOpenLib = async(id) =>{
   const url = `/id/${id}-L.jpg`
   const res = await coversApiClient.get(url)
