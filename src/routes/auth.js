@@ -1,6 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET;
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
@@ -31,16 +33,32 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.post('/login', (req, res) => {
-  const { username, password } = req.body;
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
-  const user = users.find(u => u.username === username && u.password === password);
+  try {
+    const user = await User.findOne({ where: { email } });
 
-  if (!user) {
-    return res.status(401).json({ message: 'Invalid credentials.' });
+    if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+      return res.status(401).json({ message: 'Invalid email or password.' });
+    }
+
+    // Generates a JWT token
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '1d' } 
+    );
+
+    return res.status(200).json({
+      message: 'Login successful.',
+      token,
+      user: { id: user.id, email: user.email },
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Internal server error.' });
   }
-
-  return res.status(200).json({ message: 'Login successful.' });
 });
 
 module.exports = router;
