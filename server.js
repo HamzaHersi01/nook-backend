@@ -6,7 +6,7 @@ const booksRoutes = require('./src/routes/search.js');
 const worksRoutes = require('./src/routes/works.js')
 const coversRoutes = require('./src/routes/covers.js')
 const authRoutes = require('./src/routes/auth.js');
-const progressRoutes = require('./routes/progress');
+const progressRoutes = require('./src/routes/progress.js')
 
 const PORT = process.env.PORT
 const app = express()
@@ -20,7 +20,7 @@ app.use('/search', booksRoutes);
 app.use('/works/', worksRoutes);
 app.use('/covers/', coversRoutes);
 app.use('/auth', authRoutes);
-app.use('/api/progress', progressRoutes);
+app.use('/progress', progressRoutes);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);

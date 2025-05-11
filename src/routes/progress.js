@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { UserBook } = require('../models');
-const authenticateUser = require('../middleware/auth');
+const { UserBook } = require('../../models');
+const authenticateUser = require('../middleware/authenticate.js');
 
 // Update reading progress
 router.put('/:isbn', authenticateUser, async (req, res) => {
